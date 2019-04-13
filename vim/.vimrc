@@ -36,6 +36,8 @@ endif
 " colorscheme $ syntax highlighting
   Plugin 'mhartington/oceanic-next'
   Plugin 'AlessandroYorba/Sierra'
+  Plugin 'flazz/vim-colorschemes'
+  Plugin 'whatyouhide/vim-gotham'
   Plugin 'fcpg/vim-fahrenheit'
   Plugin 'Yggdroot/indentline'
   Plugin 'Raimondi/delimitMate'
@@ -83,6 +85,7 @@ endif
   set backupdir=/home/psg/.vim
 
   set colorcolumn=72
+  highlight ColorColumn ctermbg=7 guibg=LightGrey
 
 " NERDTree settings
   let g:NERDTreeWinSize=45
@@ -126,14 +129,19 @@ endif
 
 " Themes, commands, etc ---------------------------------{{{
 " Theme
-  syntax enable
+  syntax on
   set t_Co=256
-  if (has("termguicolors"))
-	set termguicolors
-  endif
+
+" The following is not working with hyperJS 
+"  if (has("termguicolors"))
+"	set termguicolors
+"  endif
 
   set t_ut=
-  colorscheme sierra
+"  let g:sierra_Midnight = 1
+  colorscheme OceanicNext 
+"  colorscheme icansee 
+"  colorscheme yeller 
 
   let g:airline_theme='oceanicnext'
 " highlight the current line number
