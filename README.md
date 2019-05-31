@@ -25,7 +25,7 @@ Set-up
 ----------------------------
 
 Vim specific set-up:
-* install plugins via Vundle
+*install plugins via Vundle
 
     :PluginInstall
     
