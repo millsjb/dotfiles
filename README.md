@@ -25,8 +25,9 @@ Set-up
 ----------------------------
 
 Vim specific set-up:
+* install plugins via Vundle
 
-    run :PluginInstall to install vim plugins using Vundle
+    :PluginInstall
     
 Zsh specific set-up:
 
