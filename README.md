@@ -1,7 +1,7 @@
 millsjb's dotfiles
 ===================
 
-This repo is mostly meant to serve as a home for my developer environment set-up, allowing for easy deployment on new machines. Use at your own risk!
+This repo is mostly meant to serve as a home for my development environment set-up, allowing for easy deployment on new machines. Use at your own risk!
 
 Requirements
 ------------
