@@ -19,7 +19,7 @@ Clone onto your laptop:
 
 Use symlink to install dotfiles into $home dir:
 
-    $ ln -s $home/ <LINK_NAME>
+    $ ln -s /path/to/file /path/to/symlink
 
 Vim set-up:
 ----------------------------
