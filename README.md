@@ -5,7 +5,7 @@ This repo is mostly meant to serve as a home for my development environment set-
 
 References
 ------------
-    https://medium.com/@Andreas_cmj/how-to-setup-a-nice-looking-terminal-with-wsl-in-windows-10-creators-update-2b468ed7c326
+- https://medium.com/@Andreas_cmj/how-to-setup-a-nice-looking-terminal-with-wsl-in-windows-10-creators-update-2b468ed7c326
 
 
 Requirements
