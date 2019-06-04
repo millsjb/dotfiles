@@ -1,14 +1,38 @@
+# attempt to fix nerdTree icons
+export LC_ALL=en_US.utf-8
+export LANG="$LC_ALL"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/millsjb/.oh-my-zsh"
+export ZSH="/home/millsjb/.oh-my-zsh"
+
+# Powerlevel9k
+# Customize the Powerlevel9k prompts
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs status)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
+# Load Nerd Fonts with Powerlevel9k theme for Zsh
+POWERLEVEL9K_MODE='nerdfont-complete'
+
+# Add the custom Medium icon prompt segment
+POWERLEVEL9K_CUSTOM_MEDIUM="echo -n $'\uF859'"
+POWERLEVEL9K_CUSTOM_MEDIUM_FOREGROUND="black"
+POWERLEVEL9K_CUSTOM_MEDIUM_BACKGROUND="white"
+
+# Add the custom freeCodeCamp prompt segment
+POWERLEVEL9K_CUSTOM_FREECODECAMP="echo -n $'\uE242' freeCodeCamp"
+POWERLEVEL9K_CUSTOM_FREECODECAMP_FOREGROUND="white"
+POWERLEVEL9K_CUSTOM_FREECODECAMP_BACKGROUND="cyan"
+
+source ~/powerlevel9k/powerlevel9k.zsh-theme
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="alanpeabody"
+ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -62,7 +86,7 @@ ZSH_THEME="alanpeabody"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
 

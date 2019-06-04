@@ -36,12 +36,12 @@ endif
 " colorscheme $ syntax highlighting
   Plugin 'mhartington/oceanic-next'
   Plugin 'AlessandroYorba/Sierra'
-  Plugin 'flazz/vim-colorschemes'
-  Plugin 'whatyouhide/vim-gotham'
-  Plugin 'fcpg/vim-fahrenheit'
   Plugin 'Yggdroot/indentline'
   Plugin 'Raimondi/delimitMate'
   Plugin 'valloric/MatchTagAlways'
+
+" fonts
+  Plugin 'ryanoasis/vim-webdevicons'
 
 " utils
   Plugin 'valloric/YouCompleteMe'
@@ -55,6 +55,7 @@ endif
   Plugin 'tomtom/tcomment_vim'
   Plugin 'Chiel92/vim-autoformat'
   Plugin 'gorodinskiy/vim-coloresque'
+  Plugin 'ryanoasis/vim-devicons'
 
 " Shougo
   Plugin 'Shougo/neco-vim'
@@ -87,10 +88,65 @@ endif
   set colorcolumn=72
   highlight ColorColumn ctermbg=7 guibg=LightGrey
 
+  autocmd FileType json let g:instentLine_enabled = 0
+  autocmd FileType json let g:indentLine_setConceal = 0
+
 " NERDTree settings
   let g:NERDTreeWinSize=45
 
-" syntastic settings
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+  endfunction
+
+  call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+  call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+  call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+  call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+  call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+  call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+  call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+  call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+  call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+  call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+  call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+  call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+  call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+
+
+" airline settings
+  let g:airline_powerline_fonts = 1
+  let g:airline_theme='oceanicnext'
+
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+    endif
+
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.whitespace = 'Ξ'
+
+  " airline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
+
+"    syntastic settings
   set statusline+=%#warningmsg#
   set statusline+=%{SyntasticStatuslineFlag()}
   set statusline+=%*
@@ -105,20 +161,28 @@ endif
   let g:syntastic_python_checkers = ['pylint', 'pep8']
   let g:syntastic_html_checkers = ['']
   let g:syntastic_javascript_checkers = ['eslint']
-  let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
+  let g:tsuquyomi_disable_quickfix = 1
+  let g:syntastic_typescript_checkers = ['tsuquyomi']
 
-  let g:syntastic_error_symbol = '❌'
-  let g:syntastic_style_error_symbol = '⁉️'
-  let g:syntastic_warning_symbol = '⚠️'
-  let g:syntastic_style_warning_symbol = '💩'
+  let g:syntastic_error_symbol = 'X'
+  let g:syntastic_style_error_symbol = '?X'
+  let g:syntastic_warning_symbol = '!!'
+  let g:syntastic_style_warning_symbol = '??'
 
   highlight link SyntasticErrorSign SignColumn
   highlight link SyntasticWarningSign SignColumn
   highlight link SyntasticStyleErrorSign SignColumn
   highlight link SyntasticStyleWarningSign SignColumn
 
+  " highlight the current line number
+  hi CursorLineNR guifg=#ffffff
+  " highlight bad words in red
+  hi SpellBad guibg=#ff2929
+
+
 " ts
   autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+
 
 " remapping
   inoremap jj <Esc>
@@ -130,23 +194,12 @@ endif
 " Themes, commands, etc ---------------------------------{{{
 " Theme
   syntax on
+  set background=dark
   set t_Co=256
-
-" The following is not working with hyperJS 
-"  if (has("termguicolors"))
-"	set termguicolors
-"  endif
-
+  set encoding=utf8
   set t_ut=
-"  let g:sierra_Midnight = 1
-  colorscheme OceanicNext 
-"  colorscheme icansee 
-"  colorscheme yeller 
-
-  let g:airline_theme='oceanicnext'
-" highlight the current line number
-  hi CursorLineNR guifg=#ffffff
-" highlight bad words in red
-  hi SpellBad guibg=#ff2929
+  " let g:sierra_Midnight = 1
+  colorscheme sierra
+  "  colorscheme OceanicNext 
 
 "}}}

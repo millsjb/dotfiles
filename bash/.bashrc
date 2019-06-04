@@ -1,5 +1,8 @@
 screenfetch
-bash -c zsh
+
+# attempt to fix encoding issue with nerdTree icons
+export LC_ALL=en.utf-8
+export LANG-"$LC_ALL"
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -130,3 +133,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# launch zsh by default
+if [ -t 1 ]; then
+	exec zsh
+fi
