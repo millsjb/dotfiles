@@ -77,13 +77,19 @@ endif
   set noswapfile
   set number
   set backspace=2
-  set autoindent
   set showmatch
-  set tabstop=4
-  set shiftwidth=4
   set ruler
   set backup
   set backupdir=/home/psg/.vim
+
+  " tab/indentation settings
+  set smartindent
+  set shiftwidth=4
+  set expandtab
+  set tabstop=4
+  set smarttab
+  set listchars=tab:>-,trail:-,nbsp:_
+  set list
 
   set colorcolumn=72
   highlight ColorColumn ctermbg=7 guibg=LightGrey
@@ -92,7 +98,7 @@ endif
   autocmd FileType json let g:indentLine_setConceal = 0
 
 " NERDTree settings
-  let g:NERDTreeWinSize=45
+  let g:NERDTreeWinSize=40
 
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
@@ -174,15 +180,11 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
   highlight link SyntasticStyleErrorSign SignColumn
   highlight link SyntasticStyleWarningSign SignColumn
 
-  " highlight the current line number
-  hi CursorLineNR guifg=#ffffff
   " highlight bad words in red
   hi SpellBad guibg=#ff2929
 
-
 " ts
   autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
-
 
 " remapping
   inoremap jj <Esc>
@@ -202,4 +204,12 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
   colorscheme sierra
   "  colorscheme OceanicNext 
 
+  " cursor settings
+  let &t_ti.="\e[1 q"
+  let &t_SI.="\e[5 q"
+  let &t_EI.="\e[1 q"
+  let &t_te.="\e[0 q"
+  set cursorline
+  " highlight the current line number
+  hi CursorLineNR guifg=#ffffff
 "}}}
