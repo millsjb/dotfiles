@@ -9,6 +9,7 @@ References
 ------------
 - https://medium.com/@Andreas_cmj/how-to-setup-a-nice-looking-terminal-with-wsl-in-windows-10-creators-update-2b468ed7c326
 - https://github.com/mintty/wsltty
+- https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
 
 Requirements
