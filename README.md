@@ -28,7 +28,7 @@ Clone onto your laptop:
 
 Use symlink to install dotfiles into $home dir:
 
-    $ ln -s /path/to/file /path/to/symlink
+    $ ln -sv ~/dev/dotfiles/.vimrc ~
 
 Vim set-up:
 ----------------------------
